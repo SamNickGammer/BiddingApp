@@ -1,18 +1,16 @@
 import './App.css';
-// import AntDesignHome from './antd/AntDesignHome';
-// import LearnLayoutApp from "./learn/LearnLayoutApp";
-// import PracticeLayoutApp from "./practice/PracticeLayoutApp";
-import BiddingApp from "./Bidding App/BiddingApp";
+import {BrowserRouter} from "react-router-dom";
+import Routes from "./routes/RoutesNav";
 
 function App() {
-  // const isLearning = false;
-  return (
-    <div>
-      {/* {isLearning ? <LearnLayoutApp/> : <PracticeLayoutApp/> } */}
-      {/*<AntDesignHome/>*/}
-        <BiddingApp/>
-    </div>
-  );
+    // const isLearning = false;
+    return (
+        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
+            <BrowserRouter>
+                <Routes/>
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App;

@@ -1,12 +1,12 @@
-import Navigation from "./components/Navigaion";
+import Navigation from "../components/Navigaion";
 import {Route, Routes} from 'react-router-dom'
-import HomePage from "./pages/HomePage";
-import AboutPage from "./pages/AboutPage";
-import BiddingPage from "./pages/BiddingPage";
+import HomePage from "../pages/HomePage";
+import AboutPage from "../pages/AboutPage";
+import BiddingPage from "../pages/BiddingPage";
 import React, {Suspense} from "react";
-import SignInModal from "./components/SignInModal";
+import SignInModal from "../components/SignInModal";
 
-const BiddingDetailsLazy = React.lazy(() => import("./pages/BiddingDetails"));
+const BiddingDetailsLazy = React.lazy(() => import("../pages/BiddingDetails"));
 
 
 const RoutesNav = () => {
