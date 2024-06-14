@@ -5,15 +5,18 @@ import AboutPage from "../pages/AboutPage";
 import BiddingPage from "../pages/BiddingPage";
 import React, {Suspense} from "react";
 import SignInModal from "../components/SignInModal";
+import SignUpModal from "../components/SignUpModal";
+
 
 const BiddingDetailsLazy = React.lazy(() => import("../pages/BiddingDetails"));
 
 
 const RoutesNav = () => {
     const [openModalSignIn, setOpenModalSignIn] = React.useState(false);
+    const [openModealSignUp, setOpenModalSignUp] = React.useState(false);
     return (
         <>
-            <Navigation setOpenModalSignIn={setOpenModalSignIn}/>
+            <Navigation setOpenModalSignIn={setOpenModalSignIn} setOpenModalSignUp={setOpenModalSignUp} />
             <Routes>
                 <Route path="/" element={<HomePage/>}/>
                 <Route path="/about" element={<AboutPage/>}/>
@@ -25,6 +28,7 @@ const RoutesNav = () => {
                 }/>
             </Routes>
             <SignInModal open={openModalSignIn} onClose={() => setOpenModalSignIn(false)}/>
+            <SignUpModal open={openModealSignUp} onClose={() => setOpenModalSignUp(false)}/>
         </>
     )
 }
