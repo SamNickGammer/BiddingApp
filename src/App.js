@@ -1,23 +1,16 @@
-import logo from './logo.svg';
 import './App.css';
+// import AntDesignHome from './antd/AntDesignHome';
+// import LearnLayoutApp from "./learn/LearnLayoutApp";
+// import PracticeLayoutApp from "./practice/PracticeLayoutApp";
+import BiddingApp from "./Bidding App/BiddingApp";
 
 function App() {
+  // const isLearning = false;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* {isLearning ? <LearnLayoutApp/> : <PracticeLayoutApp/> } */}
+      {/*<AntDesignHome/>*/}
+        <BiddingApp/>
     </div>
   );
 }
