@@ -1,0 +1,1 @@
+rebuild-repo: cd web && npm install && cd ../web && npm install
