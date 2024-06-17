@@ -1,18 +1,15 @@
-const express = require('express');
-const connectDB = require('./config/database');
+const app = require('./src/app')
 
-const app = express();
-
-// Connect Database
-connectDB();
-
-// Init Middleware
-app.use(express.json({extended: false}));
-
-// Define Routes
-app.use('/api/users', require('./routes/users'));
-app.use('/api/auth', require('./routes/auth'));
-
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
+process.on('uncaughtException', (err) => {
+    console.log('uncaughtException', err);
+    process.exit(1)
+})
+
+process.on('unhandledRejection', (err) => {
+    console.log('unhandledRejection', err);
+    process.exit(1)
+})
