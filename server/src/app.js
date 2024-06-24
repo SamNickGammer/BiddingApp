@@ -2,7 +2,6 @@ const express = require('express');
 const routes = require('./routes');
 const bodyParser = require('body-parser');
 const cors = require('cors')
-
 const app = express();
 
 // Todo: We will provide condition if there is Production or Development
