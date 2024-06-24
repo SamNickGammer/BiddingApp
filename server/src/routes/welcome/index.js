@@ -2,7 +2,7 @@ const {Router} = require('express')
 
 const router = new Router({mergeParams: true})
 
-const getTime = require('./getTime')
+const getTime = require('./welcome')
 
 router.use(getTime)
 
