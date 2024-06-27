@@ -6,6 +6,7 @@ import BiddingPage from "../pages/BiddingPage";
 import React, {Suspense} from "react";
 import SignInModal from "../components/SignInModal";
 import SignUpModal from "../components/SignUpModal";
+import {routerNavigation} from "../utils/router";
 
 
 const BiddingDetailsLazy = React.lazy(() => import("../pages/BiddingDetails"));
@@ -20,19 +21,20 @@ const RoutesNav = () => {
     }
     return (
         <>
-            <Navigation setOpenModalSignIn={setOpenModalSignIn} setOpenModalSignUp={setOpenModalSignUp} />
+            <Navigation setOpenModalSignIn={setOpenModalSignIn} setOpenModalSignUp={setOpenModalSignUp}/>
             <Routes>
-                <Route path="/" element={<HomePage/>}/>
-                <Route path="/about" element={<AboutPage/>}/>
-                <Route path="/biding" element={<BiddingPage/>}/>
-                <Route path="/biding/:id" element={
+                <Route path={routerNavigation('/')} element={<HomePage/>}/>
+                <Route path={routerNavigation('/about')} element={<AboutPage/>}/>
+                <Route path={routerNavigation('/biding')} element={<BiddingPage/>}/>
+                <Route path={routerNavigation('/biding/:id')} element={
                     <Suspense fallback={<h1 className=" p-10 bg-blue-200 text-center m-5">Loading...</h1>}>
                         <BiddingDetailsLazy/>
                     </Suspense>
                 }/>
             </Routes>
-            <SignInModal open={openModalSignIn} onClose={() => setOpenModalSignIn(false)} openSignupModalFromSignIn={openSignupModalFromSignIn}/>
-            <SignUpModal open={openModealSignUp} onClose={() => setOpenModalSignUp(false)} />
+            <SignInModal open={openModalSignIn} onClose={() => setOpenModalSignIn(false)}
+                         openSignupModalFromSignIn={openSignupModalFromSignIn}/>
+            <SignUpModal open={openModealSignUp} onClose={() => setOpenModalSignUp(false)}/>
         </>
     )
 }
