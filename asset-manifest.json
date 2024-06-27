@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/BiddingApp/static/css/main.d940e956.css",
+    "main.js": "/BiddingApp/static/js/main.65c8a3ee.js",
+    "static/js/283.03b99288.chunk.js": "/BiddingApp/static/js/283.03b99288.chunk.js",
+    "static/js/453.1ce6a03a.chunk.js": "/BiddingApp/static/js/453.1ce6a03a.chunk.js",
+    "static/media/bidTruck.png": "/BiddingApp/static/media/bidTruck.f417de08053ecb3b850b.png",
+    "static/media/logo.png": "/BiddingApp/static/media/logo.440d739b358b5fbc9359.png",
+    "index.html": "/BiddingApp/index.html",
+    "main.d940e956.css.map": "/BiddingApp/static/css/main.d940e956.css.map",
+    "main.65c8a3ee.js.map": "/BiddingApp/static/js/main.65c8a3ee.js.map",
+    "283.03b99288.chunk.js.map": "/BiddingApp/static/js/283.03b99288.chunk.js.map",
+    "453.1ce6a03a.chunk.js.map": "/BiddingApp/static/js/453.1ce6a03a.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d940e956.css",
+    "static/js/main.65c8a3ee.js"
+  ]
+}
