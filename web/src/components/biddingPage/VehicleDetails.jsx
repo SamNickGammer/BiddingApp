@@ -1,30 +1,30 @@
 export default function VehicleDetails() {
     return (
-        <a href="#" className="block rounded-lg p-4 shadow-sm shadow-indigo-100">
+        <a href="#" className="block rounded-lg p-4 shadow-sm shadow-indigo-100 bg-white dark:bg-slate-800">
             <div className="flex">
                 <img
                     alt=""
-                    src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                    src="https://bd.gaadicdn.com/processedimages/royal-enfield/himalayan-450/494X300/himalayan-4506565cc8f0ef04.jpg?imwidth=400&impolicy=resize"
                     className="h-56 w-56 rounded-md object-cover"
                 />
 
-                <div className="ml-4 flex-1">
+                <div className="ml-4 flex-1 text-gray-900 dark:text-gray-100">
                     <div>
                         <dl>
                             <div>
                                 <dt className="sr-only">Price</dt>
-                                <dd className="text-sm text-gray-500">$240,000</dd>
+                                <dd className="text-sm text-gray-500 dark:text-gray-400">$240,000</dd>
                             </div>
                             <div>
-                                <dt className="sr-only">Address</dt>
-                                <dd className="font-medium">123 Wallaby Avenue, Park Road</dd>
+                                <dt className="sr-only">VechicleName</dt>
+                                <dd className="font-medium">ROYAL ENFIELD HIMALAYAN</dd>
                             </div>
                         </dl>
 
                         <div className="mt-6 flex items-center gap-8 text-xs">
                             <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
                                 <svg
-                                    className="h-6 w-6 text-indigo-700"
+                                    className="h-6 w-6 text-indigo-700 dark:text-indigo-500"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
                                     viewBox="0 0 24 24"
@@ -38,14 +38,14 @@ export default function VehicleDetails() {
                                     />
                                 </svg>
                                 <div className="mt-1.5 sm:mt-0">
-                                    <p className="text-gray-500">Parking</p>
-                                    <p className="font-medium">2 spaces</p>
+                                    <p className="text-gray-500 dark:text-gray-400">Parking</p>
+                                    <p className="font-medium">Extra Parking From 24.06.2024</p>
                                 </div>
                             </div>
 
                             <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
                                 <svg
-                                    className="h-6 w-6 text-indigo-700"
+                                    className="h-6 w-6 text-indigo-700 dark:text-indigo-500"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
                                     viewBox="0 0 24 24"
@@ -59,14 +59,14 @@ export default function VehicleDetails() {
                                     />
                                 </svg>
                                 <div className="mt-1.5 sm:mt-0">
-                                    <p className="text-gray-500">Bathroom</p>
-                                    <p className="font-medium">2 rooms</p>
+                                    <p className="text-gray-500 dark:text-gray-400">KM</p>
+                                    <p className="font-medium">2 km</p>
                                 </div>
                             </div>
 
                             <div className="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
                                 <svg
-                                    className="h-6 w-6 text-indigo-700"
+                                    className="h-6 w-6 text-indigo-700 dark:text-indigo-500"
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
                                     viewBox="0 0 24 24"
@@ -80,8 +80,8 @@ export default function VehicleDetails() {
                                     />
                                 </svg>
                                 <div className="mt-1.5 sm:mt-0">
-                                    <p className="text-gray-500">Bedroom</p>
-                                    <p className="font-medium">4 rooms</p>
+                                    <p className="text-gray-500 dark:text-gray-400">Chasis No:</p>
+                                    <p className="font-medium">NA</p>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +93,7 @@ export default function VehicleDetails() {
                                 Button 1
                             </button>
                             <button
-                                className="px-4 py-2 bg-gray-200 text-gray-700 text-sm font-medium rounded-lg shadow-sm hover:bg-gray-300">
+                                className="px-4 py-2 bg-gray-200 text-gray-700 text-sm font-medium rounded-lg shadow-sm hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-100 dark:hover:bg-gray-600">
                                 Button 2
                             </button>
                         </div>

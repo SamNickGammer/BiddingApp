@@ -1,20 +1,11 @@
-{
-  /*
-        Heads up! 👋
-
-        Plugins:
-          - @tailwindcss/forms
-      */
-}
-
 const BiddingHeader = () => {
   return (
     <div className="flex justify-between mb-4">
-      <div className="text-[18px] font-bold">Bidding</div>
+      <div className="text-[18px] font-bold text-gray-900 dark:text-white">Events</div>
       <div className="flex gap-8">
         <div className="relative">
           <details className="group [&_summary::-webkit-details-marker]:hidden">
-            <summary className="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
+            <summary className="flex cursor-pointer items-center gap-2 border-b border-gray-400 dark:border-gray-600 pb-1 text-gray-900 dark:text-white transition hover:border-gray-600 dark:hover:border-gray-400">
               <span className="text-sm font-medium"> Availability </span>
               <span className="transition group-open:-rotate-180">
                 <svg
@@ -34,18 +25,18 @@ const BiddingHeader = () => {
               </span>
             </summary>
             <div className="z-50 group-open:absolute group-open:start-0 group-open:top-auto group-open:mt-2">
-              <div className="w-96 rounded border border-gray-200 bg-white">
+              <div className="w-96 rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
                 <header className="flex items-center justify-between p-4">
-                  <span className="text-sm text-gray-700"> 0 Selected </span>
+                  <span className="text-sm text-gray-700 dark:text-gray-300"> 0 Selected </span>
                   <button
                     type="button"
-                    className="text-sm text-gray-900 underline underline-offset-4"
+                    className="text-sm text-gray-900 dark:text-white underline underline-offset-4"
                   >
                     Reset
                   </button>
                 </header>
 
-                <ul className="space-y-1 border-t border-gray-200 p-4">
+                <ul className="space-y-1 border-t border-gray-200 dark:border-gray-700 p-4">
                   <li>
                     <label
                       htmlFor="FilterInStock"
@@ -54,10 +45,10 @@ const BiddingHeader = () => {
                       <input
                         type="checkbox"
                         id="FilterInStock"
-                        className="size-5 rounded border-gray-300"
+                        className="size-5 rounded border-gray-300 dark:border-gray-600"
                       />
 
-                      <span className="text-sm font-medium text-gray-700">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                         {" "}
                         In Stock (5+){" "}
                       </span>
@@ -72,10 +63,10 @@ const BiddingHeader = () => {
                       <input
                         type="checkbox"
                         id="FilterPreOrder"
-                        className="size-5 rounded border-gray-300"
+                        className="size-5 rounded border-gray-300 dark:border-gray-600"
                       />
 
-                      <span className="text-sm font-medium text-gray-700">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                         {" "}
                         Pre Order (3+){" "}
                       </span>
@@ -90,10 +81,10 @@ const BiddingHeader = () => {
                       <input
                         type="checkbox"
                         id="FilterOutOfStock"
-                        className="size-5 rounded border-gray-300"
+                        className="size-5 rounded border-gray-300 dark:border-gray-600"
                       />
 
-                      <span className="text-sm font-medium text-gray-700">
+                      <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                         {" "}
                         Out of Stock (10+){" "}
                       </span>
@@ -107,7 +98,7 @@ const BiddingHeader = () => {
 
         <div className="relative">
           <details className="group [&_summary::-webkit-details-marker]:hidden">
-            <summary className="flex cursor-pointer items-center gap-2 border-b border-gray-400 pb-1 text-gray-900 transition hover:border-gray-600">
+            <summary className="flex cursor-pointer items-center gap-2 border-b border-gray-400 dark:border-gray-600 pb-1 text-gray-900 dark:text-white transition hover:border-gray-600 dark:hover:border-gray-400">
               <span className="text-sm font-medium"> Price </span>
 
               <span className="transition group-open:-rotate-180">
@@ -129,34 +120,34 @@ const BiddingHeader = () => {
             </summary>
 
             <div className="z-50 group-open:absolute group-open:start-0 group-open:top-auto group-open:mt-2">
-              <div className="w-96 rounded border border-gray-200 bg-white">
+              <div className="w-96 rounded border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800">
                 <header className="flex items-center justify-between p-4">
-                  <span className="text-sm text-gray-700">
+                  <span className="text-sm text-gray-700 dark:text-gray-300">
                     {" "}
                     The highest price is $600{" "}
                   </span>
 
                   <button
                     type="button"
-                    className="text-sm text-gray-900 underline underline-offset-4"
+                    className="text-sm text-gray-900 dark:text-white underline underline-offset-4"
                   >
                     Reset
                   </button>
                 </header>
 
-                <div className="border-t border-gray-200 p-4">
+                <div className="border-t border-gray-200 dark:border-gray-700 p-4">
                   <div className="flex justify-between gap-4">
                     <label
                       htmlFor="FilterPriceFrom"
                       className="flex items-center gap-2"
                     >
-                      <span className="text-sm text-gray-600">$</span>
+                      <span className="text-sm text-gray-600 dark:text-gray-300">$</span>
 
                       <input
                         type="number"
                         id="FilterPriceFrom"
                         placeholder="From"
-                        className="w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+                        className="w-full rounded-md border-gray-200 dark:border-gray-700 shadow-sm sm:text-sm dark:bg-gray-700 dark:text-white"
                       />
                     </label>
 
@@ -164,13 +155,13 @@ const BiddingHeader = () => {
                       htmlFor="FilterPriceTo"
                       className="flex items-center gap-2"
                     >
-                      <span className="text-sm text-gray-600">$</span>
+                      <span className="text-sm text-gray-600 dark:text-gray-300">$</span>
 
                       <input
                         type="number"
                         id="FilterPriceTo"
                         placeholder="To"
-                        className="w-full rounded-md border-gray-200 shadow-sm sm:text-sm"
+                        className="w-full rounded-md border-gray-200 dark:border-gray-700 shadow-sm sm:text-sm dark:bg-gray-700 dark:text-white"
                       />
                     </label>
                   </div>

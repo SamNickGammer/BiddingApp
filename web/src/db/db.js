@@ -3,11 +3,11 @@ export const initialData = [
         id: "6665ceed5fe7a78c7114c2f6",
         createdAt: "2011-06-20T11:07:00.004Z",
         updatedAt: "2011-06-21T11:07:00.004Z",
-        eventName: "Alabama Architax",
+        eventName: "HDFC bank",
         locationOfEvent: {
             address: "45 Hill Street",
             city: "Marienthal",
-            state: "Alabama",
+            state: "Karnataka",
             pinCode: 598769
         },
         vehicleDetails: [
@@ -102,18 +102,18 @@ export const initialData = [
         ],
         startDateTime: "2024-06-07T10:31:11.238Z",
         endDateTime: "2024-06-07T12:31:11.238Z",
-        startPrice: 87190,
-        bidIncrease: 671
+        startPrice: 1000,
+        bidIncrease: 100
     },
     {
         id: "6665ceedd157c6e16fb77ef5",
         createdAt: "2010-03-08T20:18:21.927Z",
         updatedAt: "2010-03-09T20:18:21.927Z",
-        eventName: "Oklahoma Applica",
+        eventName: "SBI",
         locationOfEvent: {
             address: "26 Powell Street",
             city: "Orin",
-            state: "Oklahoma",
+            state: "Assam",
             pinCode: 349600
         },
         vehicleDetails: [
@@ -142,18 +142,18 @@ export const initialData = [
         ],
         startDateTime: "2024-06-07T10:31:11.238Z",
         endDateTime: "2024-06-07T12:31:11.238Z",
-        startPrice: 37203,
-        bidIncrease: 175
+        startPrice: 1000,
+        bidIncrease: 1000
     },
     {
         id: "6665ceed9384d4fcbae759cd",
         createdAt: "2013-07-14T09:24:14.779Z",
         updatedAt: "2013-07-15T09:24:14.779Z",
-        eventName: "Oregon Xinware",
+        eventName: "Yes Bank",
         locationOfEvent: {
             address: "16 Railroad Avenue",
             city: "Morgandale",
-            state: "Oregon",
+            state: "Kolkata",
             pinCode: 597566
         },
         vehicleDetails: [
@@ -248,18 +248,18 @@ export const initialData = [
         ],
         startDateTime: "2024-06-07T10:31:11.238Z",
         endDateTime: "2024-06-07T12:31:11.238Z",
-        startPrice: 11977,
-        bidIncrease: 232
+        startPrice: 1500,
+        bidIncrease: 150
     },
     {
         id: "6665ceedab959c8d0a997d3c",
         createdAt: "2010-08-07T17:12:06.527Z",
         updatedAt: "2010-08-08T17:12:06.527Z",
-        eventName: "Virgin Islands Papricut",
+        eventName: "Tata Capital-Haryana",
         locationOfEvent: {
             address: "94 Pilling Street",
             city: "Robinson",
-            state: "Virgin Islands",
+            state: "Haryana",
             pinCode: 138539
         },
         vehicleDetails: [
@@ -310,18 +310,18 @@ export const initialData = [
         ],
         startDateTime: "2024-06-07T10:31:11.238Z",
         endDateTime: "2024-06-07T12:31:11.238Z",
-        startPrice: 19599,
-        bidIncrease: 753
+        startPrice: 1000,
+        bidIncrease: 150
     },
     {
         id: "6665ceedd9b163fb80fc0a45",
         createdAt: "2011-09-05T17:20:46.964Z",
         updatedAt: "2011-09-06T17:20:46.964Z",
-        eventName: "Nevada Gaptec",
+        eventName: "IARC Finance",
         locationOfEvent: {
             address: "78 Quay Street",
             city: "Hatteras",
-            state: "Nevada",
+            state: "Tamil Nadu",
             pinCode: 585150
         },
         vehicleDetails: [
@@ -416,8 +416,8 @@ export const initialData = [
         ],
         startDateTime: "2024-06-07T10:31:11.238Z",
         endDateTime: "2024-06-07T12:31:11.238Z",
-        startPrice: 90751,
-        bidIncrease: 528
+        startPrice: 1000,
+        bidIncrease: 500
     },
     {
         id: "6665ceed567a4978647b3438",
@@ -1249,7 +1249,7 @@ export const initialData = [
         locationOfEvent: {
             address: "29 Atlantic Avenue",
             city: "Barstow",
-            state: "Alabama",
+            state: "Karnataka",
             pinCode: 139842
         },
         vehicleDetails: [
