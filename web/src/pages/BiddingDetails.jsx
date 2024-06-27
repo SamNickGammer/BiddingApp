@@ -7,7 +7,7 @@ export default function BiddingDetails() {
     let {id} = useParams(); // need add verification for id if the provided id is really a bidding id or not.
     const bidding = initialData.find(d => d.id === id);
     return (
-        <div>
+        <div className='min-h-screen'>
             <div className='flex flex-wrap gap-[1.3rem] mb-10 flex-col'>
                 {bidding.vehicleDetails.map((vehicle) => {
                     return (

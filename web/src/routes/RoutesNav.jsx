@@ -14,6 +14,10 @@ const BiddingDetailsLazy = React.lazy(() => import("../pages/BiddingDetails"));
 const RoutesNav = () => {
     const [openModalSignIn, setOpenModalSignIn] = React.useState(false);
     const [openModealSignUp, setOpenModalSignUp] = React.useState(false);
+    const openSignupModalFromSignIn = () => {
+        setOpenModalSignIn(false);
+        setOpenModalSignUp(true);
+    }
     return (
         <>
             <Navigation setOpenModalSignIn={setOpenModalSignIn} setOpenModalSignUp={setOpenModalSignUp} />
@@ -27,8 +31,8 @@ const RoutesNav = () => {
                     </Suspense>
                 }/>
             </Routes>
-            <SignInModal open={openModalSignIn} onClose={() => setOpenModalSignIn(false)}/>
-            <SignUpModal open={openModealSignUp} onClose={() => setOpenModalSignUp(false)}/>
+            <SignInModal open={openModalSignIn} onClose={() => setOpenModalSignIn(false)} openSignupModalFromSignIn={openSignupModalFromSignIn}/>
+            <SignUpModal open={openModealSignUp} onClose={() => setOpenModalSignUp(false)} />
         </>
     )
 }
