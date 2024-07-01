@@ -11,7 +11,8 @@ export default function BiddingDetails() {
             <div className='flex flex-wrap gap-[1.3rem] mb-10 flex-col'>
                 {bidding.vehicleDetails.map((vehicle) => {
                     return (
-                        <VehicleDetails/>
+                        <VehicleDetails vehicle={vehicle}/>
+
                     )
                 })}
             </div>
