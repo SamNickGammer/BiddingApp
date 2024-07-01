@@ -6,7 +6,7 @@ function App() {
     // const isLearning = false;
 
     return (
-        <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 ">
+        <div className="mx-auto max-w-screen px-4 sm:px-6 lg:px-8 ">
             <BrowserRouter>
                 <Routes/>
             </BrowserRouter>
