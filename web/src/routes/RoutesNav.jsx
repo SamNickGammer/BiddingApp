@@ -8,6 +8,7 @@ import SignInModal from "../components/SignInModal";
 import SignUpModal from "../components/SignUpModal";
 import {routerNavigation} from "../utils/router";
 import UserProfile from "../pages/UserProfile";
+import Sell from "../components/Sell";
 
 
 const BiddingDetailsLazy = React.lazy(() => import("../pages/BiddingDetails"));
@@ -33,6 +34,7 @@ const RoutesNav = () => {
                     </Suspense>
                 }/>
                 <Route path={routerNavigation('/profile')} element={<UserProfile/>}/>
+                <Route path={routerNavigation('/seller')} element={<Sell/>}/>
              
             </Routes>
             <SignInModal open={openModalSignIn} onClose={() => setOpenModalSignIn(false)}

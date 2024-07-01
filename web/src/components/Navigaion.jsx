@@ -98,11 +98,16 @@ const Navigation = ({ setOpenModalSignIn, setOpenModalSignUp }) => {
             <div className="hidden sm:flex">
               <div
                 className="rounded-md bg-gray-100 dark:bg-gray-700 px-5 py-2.5 text-sm font-medium text-teal-600 dark:text-teal-300 cursor-pointer"
-                onClick={() => {
-                  setOpenModalSignUp(true);
-                }}
+                
               >
-                Register
+                <Link
+                  to={routerNavigation("/seller")}
+                  className="text-gray-500 dark:text-gray-300 transition hover:text-gray-500/75"
+                >
+                  {" "}
+                  sell{" "}
+                </Link>
+               
               </div>
             </div>
           </div>
