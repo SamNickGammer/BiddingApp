@@ -1,53 +1,4 @@
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-# name: Node.js CI
-
-# on:
-#   push:
-#     branches: [ "master" ]
-#   pull_request:
-#     branches: [ "master" ]
-
-# jobs:
-#   build:
-
-#     runs-on: ubuntu-latest
-
-#     strategy:
-#       matrix:
-#         node-version: [21.x]
-#         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
-#     steps:
-#     - uses: actions/checkout@v4
-#     - name: Use Node.js ${{ matrix.node-version }}
-#       uses: actions/setup-node@v3
-#       with:
-#         node-version: ${{ matrix.node-version }}
-#         cache: 'npm'
-#     - name: Change to Web
-#       run: cd web
-#     - name: Install dependencies
-#       run: npm install
-#     - name: Running Building
-#       run: npm run build
-#     - name: Deploy
-#       run: |
-#         git config --global user.name $user_name
-#         git config --global user.email $user_email
-#         git remote set-url origin https://${github_token}@github.com/${repository}
-#         npm run deploy
-#       env:
-#         user_name: 'github-actions[bot]'
-#         user_email: 'github-actions[bot]@users.noreply.github.com'
-#         github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
-#         repository: ${{ github.repository }}
-
-# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
-
-name: Node.js CI
+name: Deploy to GTIHUB
 
 on:
   push:
@@ -55,6 +6,11 @@ on:
   pull_request:
     branches: [ "master" ]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  
 jobs:
   build:
 
@@ -81,17 +37,27 @@ jobs:
     - name: Build the project
       working-directory: ./web
       run: npm run build
-    - name: Deploy
-      working-directory: ./web
-      run: |
-        git config --global user.name $user_name
-        git config --global user.email $user_email
-        git remote set-url origin https://${github_token}@github.com/${repository}
-        npm run deploy
-      env:
-        user_name: 'github-actions[bot]'
-        user_email: 'github-actions[bot]@users.noreply.github.com'
-        github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
-        repository: ${{ github.repository }}
+    - name: Upload Artifacts
+      uses: actions/upload-pages-artifact@v3
+      with: 
+          name: 'github-pages'
+          path: build
+    - name: Deploy to Github
+      uses: actions/deploy-pages@v4
+      with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifact_name: 'github-pages'
+    # - name: Deploy
+    #   working-directory: ./web
+    #   run: |
+    #     git config --global user.name $user_name
+    #     git config --global user.email $user_email
+    #     git remote set-url origin https://${github_token}@github.com/${repository}
+    #     npm run deploy
+    #   env:
+    #     user_name: 'github-actions[bot]'
+    #     user_email: 'github-actions[bot]@users.noreply.github.com'
+    #     github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+    #     repository: ${{ github.repository }}
 
 
