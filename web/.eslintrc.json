@@ -1,0 +1,36 @@
+{
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended"
+  ],
+  "parserOptions": {
+    "requireConfigFile": false,
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "bableOption": {
+      "presents": [
+        "@babel/preset-react"
+      ]
+    }
+  },
+  "plugins": [
+    "react",
+    "react-hooks"
+  ],
+  "rules": {
+    //add customize rules here as per your project's needs
+    "multiline-ternary": "off",
+    "space-before-function-paren": "off",
+    "camelcase": "off",
+    "semi": "off",
+    "no-use-before-define": "off"
+  }
+}
