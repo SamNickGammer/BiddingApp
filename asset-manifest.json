@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/BiddingApp/static/css/main.d149f1e8.css",
-    "main.js": "/BiddingApp/static/js/main.83336701.js",
+    "main.js": "/BiddingApp/static/js/main.f4d54307.js",
     "static/css/71.445109cb.chunk.css": "/BiddingApp/static/css/71.445109cb.chunk.css",
-    "static/js/71.e93cea6f.chunk.js": "/BiddingApp/static/js/71.e93cea6f.chunk.js",
+    "static/js/71.83e7cd28.chunk.js": "/BiddingApp/static/js/71.83e7cd28.chunk.js",
     "static/js/453.1ce6a03a.chunk.js": "/BiddingApp/static/js/453.1ce6a03a.chunk.js",
     "static/js/142.ea6c0f26.chunk.js": "/BiddingApp/static/js/142.ea6c0f26.chunk.js",
     "static/media/bidTruck.png": "/BiddingApp/static/media/bidTruck.929554ab9b05d5f71f72.png",
     "static/media/logo.png": "/BiddingApp/static/media/logo.440d739b358b5fbc9359.png",
     "index.html": "/BiddingApp/index.html",
     "main.d149f1e8.css.map": "/BiddingApp/static/css/main.d149f1e8.css.map",
-    "main.83336701.js.map": "/BiddingApp/static/js/main.83336701.js.map",
+    "main.f4d54307.js.map": "/BiddingApp/static/js/main.f4d54307.js.map",
     "71.445109cb.chunk.css.map": "/BiddingApp/static/css/71.445109cb.chunk.css.map",
-    "71.e93cea6f.chunk.js.map": "/BiddingApp/static/js/71.e93cea6f.chunk.js.map",
+    "71.83e7cd28.chunk.js.map": "/BiddingApp/static/js/71.83e7cd28.chunk.js.map",
     "453.1ce6a03a.chunk.js.map": "/BiddingApp/static/js/453.1ce6a03a.chunk.js.map",
     "142.ea6c0f26.chunk.js.map": "/BiddingApp/static/js/142.ea6c0f26.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d149f1e8.css",
-    "static/js/main.83336701.js"
+    "static/js/main.f4d54307.js"
   ]
 }
