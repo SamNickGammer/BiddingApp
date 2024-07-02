@@ -1,3 +1,5 @@
+import user from "./userDB"
+
 export const initialData = [
     {
       "id": "667edf8dbea92aa41d654625",
@@ -12,6 +14,7 @@ export const initialData = [
       },
       "vehicleDetails": [
         {
+          user,
           "id": "667edf8dce2f7f91ab0d6ca8",
           "typeOfVehicle": "two-wheeler",
           "name": "Toyota Corolla",
@@ -2531,6 +2534,7 @@ export const initialData = [
     }
   ]
   
+  console.log(initialData)
   
   
   
