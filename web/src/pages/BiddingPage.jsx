@@ -1,3 +1,4 @@
+import React from "react"
 import BiddingHeader from "../components/biddingPage/BiddingHeader";
 import Event from "../components/biddingPage/Event";
 import {initialData} from "../db/db";

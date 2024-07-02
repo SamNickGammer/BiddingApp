@@ -1,3 +1,4 @@
+import React from "react"
 import {convertNumberToCurrencyFormat, formatDateAndTime, getUniqueVehicleTypes} from "../../utils/utitity";
 import {Link} from "react-router-dom";
 
@@ -31,28 +32,29 @@ export default function Event({
             <div className="mt-2 text-gray-900 dark:text-gray-100">
                 <div className="flex items-baseline">
                     <p className="text-sm">Start Price:</p>
-                    <div className='text-sm text-gray-500 dark:text-gray-400 font-medium mr-[5px]'>{convertNumberToCurrencyFormat(startPrice ?? 0)}</div>
+                    <div
+                        className='text-sm text-gray-500 dark:text-gray-400 font-medium mr-[5px]'>{convertNumberToCurrencyFormat(startPrice ?? 0)}</div>
 
-                <div className="flex items-center ml-8">
-                    <p className="text-sm">Increment: </p>
-                <svg
-                        className="w-3 h-3 text-green-600 dark:text-green-400"
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 10l7-7m0 0l7 7m-7-7v18"
-                        />
-                    </svg>
-                    <div className='text-[10px] leading-[14px] text-green-500 dark:text-green-400 font-medium'>
-                        {convertNumberToCurrencyFormat(bidIncrease ?? 0)}
+                    <div className="flex items-center ml-8">
+                        <p className="text-sm">Increment: </p>
+                        <svg
+                            className="w-3 h-3 text-green-600 dark:text-green-400"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M5 10l7-7m0 0l7 7m-7-7v18"
+                            />
+                        </svg>
+                        <div className='text-[10px] leading-[14px] text-green-500 dark:text-green-400 font-medium'>
+                            {convertNumberToCurrencyFormat(bidIncrease ?? 0)}
+                        </div>
                     </div>
-                </div>
                 </div>
                 <div className="font-medium">{eventName}</div>
                 <div className="flex justify-between items-center mt-2">
