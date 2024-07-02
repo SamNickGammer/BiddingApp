@@ -1,6 +1,7 @@
 import React from "react"
 import {convertNumberToCurrencyFormat, formatDateAndTime, getUniqueVehicleTypes} from "../../utils/utitity";
 import {Link} from "react-router-dom";
+import {routerNavigation} from "../../utils/router";
 
 export default function Event({
                                   eventName,
@@ -20,7 +21,7 @@ export default function Event({
     } = formatDateAndTime(startDateTime, endDateTime)
 
     return (
-        <Link to={`/biding/${eventId}`}
+        <Link to={routerNavigation(`/biding/${eventId}`)}
               className="block rounded-lg p-4 shadow-sm shadow-indigo-100 max-w-[18rem] transform transition duration-300 hover:scale-105 hover:shadow-lg bg-white dark:bg-slate-800 dark:shadow-none">
             <div className="overflow-hidden rounded-md">
                 <img
