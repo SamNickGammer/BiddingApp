@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ModalPopup from "./common/ModalPopup";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
@@ -6,14 +6,72 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-
+import {toast} from 'react-toastify';
 const steps = ["User Details", "Address Details", "Verification", "Payment"];
 
+
 export default function SignUpModal({ open = false, onClose }) {
-  const [activeStep, setActiveStep] = React.useState(0);
+  
+
+  const [activeStep, setActiveStep] = useState(0);
+  const [userDetails, setUserDetails] = useState({
+    name: "",
+    phone: "",
+    email: "",
+  });
+  const [addressDetails, setAddressDetails] = useState({
+    address: "",
+    city: "",
+    state: "",
+    pincode: "",
+    country: "",
+  });
+  const [verificationDetails, setVerificationDetails] = useState({
+    document1: null,
+    document2: null,
+    document3: null,
+  });
 
   const handleNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    if (activeStep === steps.length - 1) {
+      console.log({ ...userDetails, ...addressDetails, ...{"photo": "photo",
+      "pan": "pan",
+      "aadhar": "aadhar"
+      } });
+
+      fetch("http://localhost:4000/api/auth/register ", {
+        method:"POST",
+        headers:{'Content-Type': 'application/json'},
+        body: JSON.stringify({...userDetails, ...addressDetails, ...{"photo": "photo",
+        "pan": "pan",
+        "aadhar": "aadhar"
+        } }),
+        
+      }).then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          response.json().then((data) => {
+            console.log(data);
+            toast.success("Registered Successfully");
+            onClose();
+
+            // <Toast message="Registered Successfully" type="success" />
+          });
+        }
+        else if (response.status === 400) {
+          response.json().then((data) => {
+            console.log(data);
+            // <Toast message={data.message} type="error" />
+            // alert(data.message);
+            toast.error(data.message);
+          });
+        }
+      });
+
+    } else {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
+
+    }
   };
 
   const handleBack = () => {
@@ -22,6 +80,20 @@ export default function SignUpModal({ open = false, onClose }) {
 
   const handleReset = () => {
     setActiveStep(0);
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (activeStep === 0) {
+      setUserDetails({ ...userDetails, [name]: value });
+    } else if (activeStep === 1) {
+      setAddressDetails({ ...addressDetails, [name]: value });
+    }
+  };
+
+  const handleFileChange = (e) => {
+    const { name, files } = e.target;
+    setVerificationDetails({ ...verificationDetails, [name]: files[0] });
   };
 
   return (
@@ -63,6 +135,8 @@ export default function SignUpModal({ open = false, onClose }) {
                   type="text"
                   id="name"
                   name="name"
+                  value={userDetails.name}
+                  onChange={handleChange}
                   required
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 />
@@ -78,6 +152,8 @@ export default function SignUpModal({ open = false, onClose }) {
                   type="tel"
                   id="phone"
                   name="phone"
+                  value={userDetails.phone}
+                  onChange={handleChange}
                   required
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 />
@@ -93,60 +169,11 @@ export default function SignUpModal({ open = false, onClose }) {
                   type="email"
                   id="email"
                   name="email"
+                  value={userDetails.email}
+                  onChange={handleChange}
                   required
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
                 />
-              </div>
-              <div className="mb-6">
-                <label
-                  htmlFor="password"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300"
-                >
-                  Password
-                </label>
-                <div className="mt-1 relative">
-                  <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    required
-                    className="block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-                  />
-                  <button
-                    type="button"
-                    className="absolute inset-y-0 right-0 pr-3 flex items-center text-sm leading-5 text-gray-700 dark:text-gray-300"
-                    onClick={() => {
-                      const passwordInput = document.getElementById(
-                        "password"
-                      );
-                      if (passwordInput.type === "password") {
-                        passwordInput.type = "text";
-                      } else {
-                        passwordInput.type = "password";
-                      }
-                    }}
-                  >
-                    <svg
-                      className="h-4 w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                      />
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z"
-                      />
-                    </svg>
-                  </button>
-                </div>
               </div>
             </form>
           </React.Fragment>
@@ -165,6 +192,8 @@ export default function SignUpModal({ open = false, onClose }) {
                 type="text"
                 id="address"
                 name="address"
+                value={addressDetails.address}
+                onChange={handleChange}
                 required
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
@@ -180,6 +209,8 @@ export default function SignUpModal({ open = false, onClose }) {
                 type="text"
                 id="city"
                 name="city"
+                value={addressDetails.city}
+                onChange={handleChange}
                 required
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
@@ -195,6 +226,8 @@ export default function SignUpModal({ open = false, onClose }) {
                 type="text"
                 id="state"
                 name="state"
+                value={addressDetails.state}
+                onChange={handleChange}
                 required
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
@@ -210,6 +243,8 @@ export default function SignUpModal({ open = false, onClose }) {
                 type="number"
                 id="pincode"
                 name="pincode"
+                value={addressDetails.pincode}
+                onChange={handleChange}
                 required
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
@@ -225,6 +260,8 @@ export default function SignUpModal({ open = false, onClose }) {
                 type="text"
                 id="country"
                 name="country"
+                value={addressDetails.country}
+                onChange={handleChange}
                 required
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
@@ -246,6 +283,7 @@ export default function SignUpModal({ open = false, onClose }) {
                 id="document1"
                 name="document1"
                 accept=".pdf, image/*"
+                onChange={handleFileChange}
                 required
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
@@ -262,6 +300,7 @@ export default function SignUpModal({ open = false, onClose }) {
                 id="document2"
                 name="document2"
                 accept=".pdf, image/*"
+                onChange={handleFileChange}
                 required
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
@@ -278,6 +317,7 @@ export default function SignUpModal({ open = false, onClose }) {
                 id="document3"
                 name="document3"
                 accept=".pdf, image/*"
+                onChange={handleFileChange}
                 required
                 className="mt-1 block w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm bg-gray-50 dark:bg-gray-700 text-gray-900 dark:text-gray-100"
               />
@@ -336,7 +376,9 @@ export default function SignUpModal({ open = false, onClose }) {
             </Box>
           </React.Fragment>
         )}
+
       </Box>
+      
     </ModalPopup>
   );
 }

@@ -5,7 +5,7 @@ const User = require("../../models/User");
 const router = express.Router()
 
 router.post('/register', async (req, res) => {
-    const { name, email, phone, city, state, country, pincode, photo, pan, aadhar } = req.body;
+    const { name, email, phone, address, city, state, country, pincode, photo, pan, aadhar } = req.body;
 
     try {
         // Check if the user already exists
@@ -19,6 +19,7 @@ router.post('/register', async (req, res) => {
             name,
             email,
             phone,
+            address,
             city,
             state,
             country,
@@ -30,7 +31,7 @@ router.post('/register', async (req, res) => {
 
         await user.save();
 
-        res.status(201).json({ message: 'User registered successfully', user });
+        res.status(200).json({ message: 'User registered successfully', user });
     } catch (error) {
         console.error(error.message);
         res.status(500).send('Server error');
