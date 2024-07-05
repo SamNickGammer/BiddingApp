@@ -10,8 +10,11 @@ import {routerNavigation} from "../utils/router";
 import UserProfile from "../pages/UserProfile";
 import Sell from "../components/Sell";
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const BiddingDetailsLazy = React.lazy(() => import("../pages/BiddingDetails"));
+
 
 
 const RoutesNav = () => {
@@ -40,6 +43,9 @@ const RoutesNav = () => {
             <SignInModal open={openModalSignIn} onClose={() => setOpenModalSignIn(false)}
                          openSignupModalFromSignIn={openSignupModalFromSignIn}/>
             <SignUpModal open={openModealSignUp} onClose={() => setOpenModalSignUp(false)}/>
+
+            <ToastContainer />
+            
         </>
     )
 }
