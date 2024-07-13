@@ -13,6 +13,44 @@ import MenuItem from "@mui/material/MenuItem";
 const Navigation = ({setOpenModalSignIn}) => {
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+    const [isLoggedIn, setIsLoggedIn ] = React.useState(false);
+
+    // React.useEffect(() => {
+    //   setTimeout(() => {
+    //     if (localStorage.getItem("token") === null) {
+    //       setOpenModalSignIn(true)
+    //   }
+    //   },10000)
+    //     if(localStorage.getItem("token") !== null){
+    //         setIsLoggedIn(true)
+    //     }
+    // }, []) 
+
+    React.useEffect(() => {
+      const checkAuth = () => {
+        setTimeout(() => {
+          if (localStorage.getItem("token") === null) {
+            setOpenModalSignIn(true);
+          }
+        }, 10000);
+  
+        if (localStorage.getItem("token") !== null) {
+          setIsLoggedIn(true);
+        }
+      };
+  
+      // Run checkAuth on mount
+      checkAuth();
+  
+      // Add event listener for custom storage change event
+      window.addEventListener('storageChange', checkAuth);
+  
+      // Cleanup event listener on unmount
+      return () => {
+        window.removeEventListener('storageChange', checkAuth);
+      };
+    }, []); // No dependencies needed here as the event listener will handle updates
+  
 
     const navigate = useNavigate()
     const navigateToUser = () => {
@@ -79,14 +117,15 @@ const Navigation = ({setOpenModalSignIn}) => {
 
                 <div className="flex items-center gap-4">
                     <div className="sm:flex sm:gap-4">
-                        <div
+                      {!isLoggedIn && <div
                             className="rounded-md bg-teal-600 px-5 py-2.5 text-sm font-medium text-white shadow cursor-pointer"
                             onClick={() => {
                                 setOpenModalSignIn(true);
                             }}
                         >
                             Login
-                        </div>
+                        </div>}
+                        
 
             <div className="hidden sm:flex">
                 <Link

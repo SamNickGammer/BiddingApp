@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
     aadhar: { type: String, required: true },
 });
 
-const User = mongoose.model('User', userSchema);
+// Check if the model is already compiled
+const User = mongoose.models.User || mongoose.model('User', userSchema);
 
 module.exports = User;
