@@ -1,10 +1,8 @@
 const {Router} = require('express')
 const router = new Router({mergeParams: true})
 
-const login = require('./login')
-const signUp = require('./signUp')
+const me = require('./me')
 
-router.use(login)
-router.use(signUp)
+router.use(me)
 
 module.exports = router;

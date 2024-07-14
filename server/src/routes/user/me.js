@@ -1,14 +1,20 @@
 const express = require('express')
-const {Success} = require("../../helper/handleResponse");
-const { APP_VERSION } = require('../../config/env');
+const {Success, NotFound} = require("../../helper/handleResponse");
+const {authUser} = require("../../middleware/auth");
+const User = require("../../models/User");
 
 const router = express.Router()
 
-router.get('/', async (req, res) => {
-    const data = {
-        date: new Date().toLocaleString('en-US', {timeZone: 'Asia/Kolkata', hour12: true}),
-        version: APP_VERSION
+router.get('/me', authUser, async (req, res) => {
+    const userId = req.user.user_id
+    console.log(req.user)
+
+    const user = await User.findById(userId);
+    if (!user) {
+        return NotFound(res, "You are not registered user");
     }
-    return Success(res, {...data})
-    
+
+    return Success(res, {user});
 })
+
+module.exports = router;
