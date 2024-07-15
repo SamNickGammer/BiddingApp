@@ -1,13 +1,11 @@
 import axios from 'axios';
 
-/**
- * Utility function to fetch data from backend
- * @param {string} url - The API endpoint URL
- * @param {string} method - The HTTP request method (e.g., 'GET', 'POST', etc.)
- * @param {Object} [data] - The request payload (for POST, PUT, PATCH methods)
- * @param {Object} [headers] - Additional headers (optional)
- * @returns {Promise} - Returns a promise that resolves with response data or rejects with error
- */
+//   @param {string} url - The API endpoint URL
+//   @param {string} method - The HTTP request method (e.g., 'GET', 'POST', etc.)
+//   @param {Object} [data] - The request payload (for POST, PUT, PATCH methods)
+//   @param {Object} [headers] - Additional headers (optional)
+//   @returns {Promise} - Returns a promise that resolves with response data or rejects with error
+ 
 
 const fetchBidHubAPI = (url, method, data = null, headers = {}) => {
     const config = {
