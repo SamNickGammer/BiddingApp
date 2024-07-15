@@ -57,10 +57,9 @@ const Navigation = ({ setOpenModalSignIn }) => {
 
   const handleLogout = () => {
     // Clear localStorage
-    localStorage.clear();
-
-    // Redirect to login or home page
-    navigate(routerNavigation("/login")); // Adjust the URL as needed
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    window.location.replace(routerNavigation("/"));
   };
 
   return (

@@ -36,6 +36,7 @@ export default function SignInModal({open = false, onClose, openSignupModalFromS
                 setLoading(false);
                 // Optionally, handle successful login (e.g., redirect, close modal)
                 onClose();
+                window.location.reload();
 
             } else {
                 const errorData = await response.json();
