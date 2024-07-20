@@ -1,16 +1,21 @@
-const jwt = require('jsonwebtoken');
+const {Unauthorized} = require("../helper/handleResponse");
+const {verifyJWT} = require("../helper/jwtFns");
 
-module.exports = function (req, res, next) {
-    const token = req.header('x-auth-token');
-    if (!token) {
-        return res.status(401).json({msg: 'No token, authorization denied'});
+const authUser = async (req, res, next) => {
+    const authHeader = req.headers.authorization;
+
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+        return Unauthorized(res, 'Unauthorized User');
     }
+
+    const token = authHeader.split(' ')[1];
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded.user;
+        req.user = await verifyJWT(token); // You can add more user information if needed
         next();
-    } catch (err) {
-        res.status(401).json({msg: 'Token is not valid'});
+    } catch (error) {
+        return Unauthorized(res, error)
     }
 };
+
+module.exports = {authUser}

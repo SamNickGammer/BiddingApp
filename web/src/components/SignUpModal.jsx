@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ModalPopup from "./common/ModalPopup";
 import Box from "@mui/material/Box";
 import Stepper from "@mui/material/Stepper";
@@ -6,13 +6,11 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
+
 const steps = ["User Details", "Address Details", "Verification", "Payment"];
 
-
 export default function SignUpModal({ open = false, onClose }) {
-  
-
   const [activeStep, setActiveStep] = useState(0);
   const [userDetails, setUserDetails] = useState({
     name: "",
@@ -32,45 +30,65 @@ export default function SignUpModal({ open = false, onClose }) {
     document3: null,
   });
 
-  const handleNext = () => {
-    if (activeStep === steps.length - 1) {
-      console.log({ ...userDetails, ...addressDetails, ...{"photo": "photo",
-      "pan": "pan",
-      "aadhar": "aadhar"
-      } });
+  const isStepValid = () => {
+    if (activeStep === 0) {
+      const { name, phone, email } = userDetails;
+      return name && phone && email;
+    } else if (activeStep === 1) {
+      const { address, city, state, pincode, country } = addressDetails;
+      return address && city && state && pincode && country;
+    } else if (activeStep === 2) {
+      const { document1, document2, document3 } = verificationDetails;
+      return document1 && document2 && document3;
+    }
+    return true;
+  };
 
-      fetch("http://localhost:4000/api/auth/register ", {
-        method:"POST",
-        headers:{'Content-Type': 'application/json'},
-        body: JSON.stringify({...userDetails, ...addressDetails, ...{"photo": "photo",
-        "pan": "pan",
-        "aadhar": "aadhar"
-        } }),
-        
+  useEffect(() => {
+    isStepValid();
+  }, [activeStep, userDetails, addressDetails, verificationDetails]);
+
+  const handleNext = () => {
+    if (!isStepValid()) {
+      toast.error("Please fill all the required fields.");
+      return;
+    }
+
+    if (activeStep === steps.length - 1) {
+      console.log({
+        ...userDetails,
+        ...addressDetails,
+        photo: "photo",
+        pan: "pan",
+        aadhar: "aadhar",
+      });
+
+      fetch("http://localhost:4000/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...userDetails,
+          ...addressDetails,
+          photo: "photo",
+          pan: "pan",
+          aadhar: "aadhar",
+        }),
       }).then((response) => {
         console.log(response);
         if (response.status === 200) {
           response.json().then((data) => {
             console.log(data);
             toast.success("Registered Successfully");
-            onClose();
-
-            // <Toast message="Registered Successfully" type="success" />
           });
-        }
-        else if (response.status === 400) {
+        } else if (response.status === 400) {
           response.json().then((data) => {
             console.log(data);
-            // <Toast message={data.message} type="error" />
-            // alert(data.message);
             toast.error(data.message);
           });
         }
       });
-
     } else {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
-
     }
   };
 
@@ -338,7 +356,6 @@ export default function SignUpModal({ open = false, onClose }) {
                 <img
                   src="../assets/imgs/Untitled design.png"
                   alt="GPay QR Code"
-                  // className="w-32 h-64"
                 />
               </div>
             </div>
@@ -376,9 +393,7 @@ export default function SignUpModal({ open = false, onClose }) {
             </Box>
           </React.Fragment>
         )}
-
       </Box>
-      
     </ModalPopup>
   );
 }

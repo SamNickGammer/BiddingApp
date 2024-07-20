@@ -1,17 +1,17 @@
 const express = require('express')
-const {Success} = require("../../helper/handleResponse");
+const {Success, InternalServerError} = require("../../helper/handleResponse");
 const User = require("../../models/User");
 
 const router = express.Router()
 
 router.post('/register', async (req, res) => {
-    const { name, email, phone, address, city, state, country, pincode, photo, pan, aadhar } = req.body;
+    const {name, email, phone, address, city, state, country, pincode, photo, pan, aadhar} = req.body;
 
     try {
         // Check if the user already exists
-        let user = await User.findOne({ email });
+        let user = await User.findOne({email});
         if (user) {
-            return res.status(400).json({ message: 'User already exists' });
+            return res.status(400).json({message: 'User already exists'});
         }
 
         // Create a new user
@@ -31,12 +31,12 @@ router.post('/register', async (req, res) => {
 
         await user.save();
 
-        res.status(200).json({ message: 'User registered successfully', user });
+        return Success(res, {user})
     } catch (error) {
         console.error(error.message);
-        res.status(500).send('Server error');
+        return InternalServerError(res, "An error occurred while registration");
     }
-    
+
 })
 
 
