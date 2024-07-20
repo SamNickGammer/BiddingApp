@@ -1,63 +1,63 @@
-name: Deploy to GTIHUB
+# name: Deploy to GTIHUB
 
-on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+# on:
+#   push:
+#     branches: [ "master" ]
+#   pull_request:
+#     branches: [ "master" ]
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+# permissions:
+#   contents: read
+#   pages: write
+#   id-token: write
   
-jobs:
-  build:
+# jobs:
+#   build:
 
-    runs-on: ubuntu-latest
+#     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [21.6]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+#     strategy:
+#       matrix:
+#         node-version: [21.6]
+#         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
-    steps:
-    - uses: actions/checkout@v4
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - name: Change to Web Directory
-      working-directory: ./web
-      run: echo "Changed to web directory"
-    - name: Install dependencies
-      working-directory: ./web
-      run: npm install
-    - name: Build the project
-      working-directory: ./web
-      run: npm run build
-    - name: Upload Artifacts
-      uses: actions/upload-pages-artifact@v3
-      with: 
-          name: 'github-pages'
-          path: ./web/build
-    - name: Deploy to Github
-      uses: actions/deploy-pages@v4
-      with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          artifact_name: 'github-pages'
-    # - name: Deploy
-    #   working-directory: ./web
-    #   run: |
-    #     git config --global user.name $user_name
-    #     git config --global user.email $user_email
-    #     git remote set-url origin https://${github_token}@github.com/${repository}
-    #     npm run deploy
-    #   env:
-    #     user_name: 'github-actions[bot]'
-    #     user_email: 'github-actions[bot]@users.noreply.github.com'
-    #     github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
-    #     repository: ${{ github.repository }}
+#     steps:
+#     - uses: actions/checkout@v4
+#     - name: Use Node.js ${{ matrix.node-version }}
+#       uses: actions/setup-node@v3
+#       with:
+#         node-version: ${{ matrix.node-version }}
+#         cache: 'npm'
+#     - name: Change to Web Directory
+#       working-directory: ./web
+#       run: echo "Changed to web directory"
+#     - name: Install dependencies
+#       working-directory: ./web
+#       run: npm install
+#     - name: Build the project
+#       working-directory: ./web
+#       run: npm run build
+#     - name: Upload Artifacts
+#       uses: actions/upload-pages-artifact@v3
+#       with: 
+#           name: 'github-pages'
+#           path: ./web/build
+#     - name: Deploy to Github
+#       uses: actions/deploy-pages@v4
+#       with:
+#           token: ${{ secrets.GITHUB_TOKEN }}
+#           artifact_name: 'github-pages'
+#     # - name: Deploy
+#     #   working-directory: ./web
+#     #   run: |
+#     #     git config --global user.name $user_name
+#     #     git config --global user.email $user_email
+#     #     git remote set-url origin https://${github_token}@github.com/${repository}
+#     #     npm run deploy
+#     #   env:
+#     #     user_name: 'github-actions[bot]'
+#     #     user_email: 'github-actions[bot]@users.noreply.github.com'
+#     #     github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }}
+#     #     repository: ${{ github.repository }}
 
 
